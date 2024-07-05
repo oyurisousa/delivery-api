@@ -1,4 +1,4 @@
-import express, { Response, Request, NextFunction, urlencoded } from "express"
+import express, { Response, Request, NextFunction } from "express"
 import 'express-async-errors'
 import { routes } from "./routes"
 
