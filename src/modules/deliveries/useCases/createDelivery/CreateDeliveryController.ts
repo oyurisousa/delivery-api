@@ -1,4 +1,4 @@
-import { CreateDeliveryUseCase } from "./CreateDeliveryUseCase";
+import { CreateDeliveryUseCase } from './CreateDeliveryUseCase'
 import { Request, Response } from 'express'
 export class CreateDeliveryController {
   async handle(request: Request, response: Response) {
@@ -8,7 +8,7 @@ export class CreateDeliveryController {
 
     const delivery = await createDeliveryUseCase.execute({
       id_client,
-      item_name
+      item_name,
     })
 
     return response.json(delivery)

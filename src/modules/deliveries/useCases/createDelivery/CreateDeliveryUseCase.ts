@@ -1,4 +1,4 @@
-import { prisma } from "../../../../database/prismaClient"
+import { prisma } from '../../../../database/prismaClient'
 
 interface ICreateDelivery {
   item_name: string
@@ -11,7 +11,7 @@ export class CreateDeliveryUseCase {
       data: {
         item_name,
         id_client,
-      }
+      },
     })
 
     return delivery

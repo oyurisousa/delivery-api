@@ -1,8 +1,8 @@
-import { hash } from "bcrypt"
-import { prisma } from "../../../../database/prismaClient"
+import { hash } from 'bcrypt'
+import { prisma } from '../../../../database/prismaClient'
 
 interface ICreateClient {
-  username: string,
+  username: string
   password: string
 }
 
@@ -11,9 +11,9 @@ export class CreateClientUseCase {
     const clientExists = await prisma.clients.findFirst({
       where: {
         username: {
-          mode: 'insensitive'
-        }
-      }
+          mode: 'insensitive',
+        },
+      },
     })
 
     if (clientExists) {
@@ -23,8 +23,8 @@ export class CreateClientUseCase {
     const client = await prisma.clients.create({
       data: {
         username,
-        password: hashPassword
-      }
+        password: hashPassword,
+      },
     })
     return client
   }

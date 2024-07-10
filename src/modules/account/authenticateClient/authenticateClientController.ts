@@ -6,7 +6,10 @@ export class AuthenticateClientController {
     const { username, password } = request.body
 
     const authnticateClientUseCase = new AuthenticateClientUseCase()
-    const result = await authnticateClientUseCase.execute({ username, password })
+    const result = await authnticateClientUseCase.execute({
+      username,
+      password,
+    })
 
     return response.json(result).status(200)
   }

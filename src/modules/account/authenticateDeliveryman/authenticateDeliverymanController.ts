@@ -6,7 +6,10 @@ export class AuthenticateDeliverymanController {
     const { username, password } = request.body
 
     const authenticateDeliverymanUseCase = new AuthenticateDeliverymanUseCase()
-    const result = await authenticateDeliverymanUseCase.execute({ username, password })
+    const result = await authenticateDeliverymanUseCase.execute({
+      username,
+      password,
+    })
 
     return response.json(result).status(200)
   }

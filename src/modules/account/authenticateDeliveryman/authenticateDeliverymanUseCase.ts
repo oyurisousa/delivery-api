@@ -1,6 +1,6 @@
-import { compare } from "bcrypt"
-import { prisma } from "../../../database/prismaClient"
-import { sign } from "jsonwebtoken"
+import { compare } from 'bcrypt'
+import { prisma } from '../../../database/prismaClient'
+import { sign } from 'jsonwebtoken'
 
 interface IAuthenticateDeliveryman {
   username: string
@@ -9,11 +9,10 @@ interface IAuthenticateDeliveryman {
 
 export class AuthenticateDeliverymanUseCase {
   async execute({ password, username }: IAuthenticateDeliveryman) {
-
     const deliveryman = await prisma.deliveryman.findFirst({
       where: {
-        username
-      }
+        username,
+      },
     })
 
     if (!deliveryman) {
@@ -27,12 +26,12 @@ export class AuthenticateDeliverymanUseCase {
     }
 
     const token = await sign({ username }, '158193559058d796c2a922037b217daa', {
-      expiresIn: "1d",
-      subject: deliveryman.id
+      expiresIn: '1d',
+      subject: deliveryman.id,
     })
 
     return {
-      token
+      token,
     }
   }
 }

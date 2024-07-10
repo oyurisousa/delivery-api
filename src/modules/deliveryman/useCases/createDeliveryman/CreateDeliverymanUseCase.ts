@@ -1,8 +1,8 @@
-import { hash } from "bcrypt"
-import { prisma } from "../../../../database/prismaClient"
+import { hash } from 'bcrypt'
+import { prisma } from '../../../../database/prismaClient'
 
 interface ICreateDeliveryman {
-  username: string,
+  username: string
   password: string
 }
 
@@ -11,9 +11,9 @@ export class CreateDeliverymanUseCase {
     const deliverymanExists = await prisma.deliveryman.findFirst({
       where: {
         username: {
-          mode: 'insensitive'
-        }
-      }
+          mode: 'insensitive',
+        },
+      },
     })
 
     if (deliverymanExists) {
@@ -24,8 +24,8 @@ export class CreateDeliverymanUseCase {
     const deliveryman = await prisma.deliveryman.create({
       data: {
         username,
-        password: hashPassword
-      }
+        password: hashPassword,
+      },
     })
     return deliveryman
   }
